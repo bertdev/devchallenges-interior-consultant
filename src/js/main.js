@@ -2,7 +2,6 @@ const menuIcon = document.querySelector('#menu-hamburguer');
 const nav = document.querySelector('nav');
 
 function menuMobile() {
-  const header = document.querySelector('.header');
 
   if (window.screen.width <= 790) {
     nav.classList.add('mobile');
