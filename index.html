@@ -9,19 +9,33 @@
   <link rel="shortcut icon" href="src/images/devchallenges.png" type="image/x-icon">
   <link rel="stylesheet" type="text/css" href="src/css/main.css">
 </head>
-<body>
+<body onresize="menuMobile()">
   <header>
     <div class="container">
       <div class="logo">
         <a href="">This interior</a>
       </div>
+      
+      <nav class="mobile">
+        <img src="src/images/close_white_24dp.svg" alt="menu" onclick="menuClose()">
+        <ul>
+          <li><a href="" class="active">Home</a></li>
+          <li><a href="">Collection</a></li>
+          <li><a href="">About</a></li>
+          <li><a href="">Contact</a></li>
+        </ul>
+      </nav>
+      
+      <div id="menu-hamburguer" class="" onclick="menuOpen()"> 
+        <img src="src/images/menu_white_24dp.svg" alt="menu">
+      </div>
+    
     </div>
-
   </header>
 
   <main>
     <div class="container">
-      <section>
+      <section class="content">
         <h1>
           Modern interior
         </h1>
@@ -38,6 +52,8 @@
       </section>
     </div>
   </main>
+
+  <script src="src/js/main.js"></script>
   
 </body>
 </html>
