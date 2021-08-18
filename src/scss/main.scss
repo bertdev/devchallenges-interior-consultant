@@ -6,7 +6,7 @@ $color: (
   background: #181719,
   text-color-main: #FFF,
   text-color-secondary: #828282,
-  text-color-footer: #181719,
+  text-color-footer: #A9A9A9,
 );
 
 $font: (
@@ -24,9 +24,16 @@ $font: (
 }
 
 $desktop: 790px;
+$largeDesktop: 1200px;
 
 @mixin desktop {
   @media (min-width: #{$desktop}) {
+    @content;
+  }
+}
+
+@mixin largeDesktop {
+  @media (min-width: #{$largeDesktop}) {
     @content;
   }
 }
@@ -166,6 +173,14 @@ header {
 main {
   margin-top: 38px;
 
+  @include desktop() {
+   .container {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+   } 
+  }
+
   .content {
     h1 {
       font: {
@@ -174,6 +189,12 @@ main {
         weight: 500;
       }
       line-height: 46px;
+
+      @include desktop() {
+        font-size: 48px;
+        line-height: 61px;
+        max-width: 365px;
+      }
     }
 
     p {
@@ -185,6 +206,19 @@ main {
         weight: 400;
       }
       line-height: 17px;
+
+      @include desktop() {
+        margin-top: 35px;
+        font-size: 18px;
+        line-height: 22px;
+        max-width: 410px;
+      }
+
+      @include largeDesktop() {
+        margin-top: 40px;
+        font-size: 24px;
+        line-height: 29px;
+      }
     }
 
     a {
@@ -194,6 +228,10 @@ main {
       justify-content: start;
       text-decoration: none;
       color: color(text-color-main);
+      
+      @include desktop() {
+        height: 22px;
+      }
       
       
       p {
@@ -205,12 +243,21 @@ main {
           weight: bold;
         };
         line-height: 17px;
+
+        @include desktop() {
+          font-size: 18px;
+          line-height: 22px;
+        }
       }
       
       span {
         margin-left: 15px;
         img {
           height: 20px;
+
+          @include desktop() {
+            height: 24px;
+          }
         }
       }
 
@@ -224,21 +271,146 @@ main {
 
     img {
       width: 100%;
+
+      @include desktop() {
+        max-width: 737px;
+      }
     }
 
     .card {
-      width: 300px;
-      height: 138px;
+      width: 50%;
+      min-width: 300px;
+      padding-left: 19px;
+      padding-top: 14px;
+      padding-bottom: 25px;
       background-color: color(background);
       position: absolute;
       margin-top: -52px;
       margin-left: 10%;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+      @include desktop() {
+        width: 40%;
+        max-width: 410px;
+        margin-left: 18%;
+        padding-left: 22px;
+        padding-top: 20px;
+        padding-bottom: 29px;
+      }
+
+      @include largeDesktop() {
+        padding-left: 26px;
+        padding-top: 23px;
+        padding-bottom: 34px;
+      }
+
+      .userInformation {
+        display: flex;
+
+        img {
+          width: 12.2%;
+          height: 20%;
+          border-radius: 50%;
+        }
+
+        .userDescription {
+          margin-left: 14px;
+          font-family: font(primary);
+          
+          @include largeDesktop() {
+            margin-left: 19px;
+          }
+
+          h2 {
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 15px;
+
+            @include desktop() {
+              font-size: 13px;
+              line-height: 16px;
+            }
+
+            @include largeDesktop() {
+              font-size: 14px;
+              line-height: 17px;
+            }
+          }
+
+          p {
+            margin-top: 5px;
+            font-weight: 500;
+            font-size: 10px;
+            line-height: 12px;
+            color: color(text-color-secondary);
+
+            @include desktop() {
+              font-size: 11px;
+              line-height: 13px;
+            }
+
+            @include largeDesktop() {
+              margin-top: 8px;
+              font-size: 12px;
+              line-height: 15px;
+            }
+          }
+
+        }
+      }
+
+      .description {
+        margin-top: 18.25px;
+
+        @include desktop() {
+          margin-top: 25px;
+        }
+
+        p {
+          font: {
+            family: font(secondary);
+            size: 18px;
+            weight: 700;
+          }
+          line-height: 23px;
+
+          @include desktop() {
+            font-size: 20px;
+            line-height: 25px;
+          }
+
+          @include largeDesktop() {
+            font-size: 24px;
+            line-height: 31px;
+          }
+        }
+      }
     }
   }
 }
 
 footer {
-  width: 40px;
-  margin-top: 10px;
+  text-align: center;
+  padding-bottom: 24px;
+  margin-top: calc(138px - 52px + 61px);
+
+  @include largeDesktop() {
+    margin-top: calc(189px - 52px + 128px);
+  }
+  
+  p {
+    color: color(text-color-footer);
+    font: {
+      family: font(primary);
+      size: 14px;
+      weight: 500;
+    }
+    line-height: 17px;
+
+    a {
+      font-weight: 700;
+      color: color(text-color-footer);
+      
+    }
+  }
 }
